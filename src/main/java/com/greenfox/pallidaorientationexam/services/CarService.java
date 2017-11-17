@@ -34,6 +34,9 @@ public class CarService {
     }
 
     public List<Car> listAllByTen(long pageId) {
+        if (pageId < 0) {
+            pageId = 0;
+        }
         return carRepo.findAllByTen(pageId * 10);
     }
 }
