@@ -20,4 +20,12 @@ public class CarService {
     public List<Car> findAllByPlate(String search) {
         return carRepo.findAllByPlate(search);
     }
+
+    public List<Car> findAllPolice() {
+        return carRepo.findAllPolice();
+    }
+
+    public List<Car> findAllDiplomat() {
+        return carRepo.findAllDiplomat();
+    }
 }

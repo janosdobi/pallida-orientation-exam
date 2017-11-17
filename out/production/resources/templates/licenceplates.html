@@ -5,12 +5,12 @@
     <title>Licence Plates Finder</title>
 </head>
 <body>
-    <form action="/car/search" method="get">
-        <input type="search" name="search" placeholder="Search"/>
+    <form action="/search" method="get">
+        <input type="search" name="q" placeholder="Search"/>
         <button type="submit" value="Submit">Search</button>
     </form>
-    <a href='/car/police'>Police cars only</a>
-    <a href='/car/diplomat'>Diplomats only</a>
+    <a href='/search?police=1'>Police cars only</a>
+    <a href='/search?diplomat=1'>Diplomats only</a>
     <table>
         <tr>
             <th>Licence Plate</th>
