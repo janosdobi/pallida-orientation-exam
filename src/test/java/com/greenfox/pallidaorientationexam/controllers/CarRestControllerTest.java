@@ -42,12 +42,23 @@ public class CarRestControllerTest {
     }
 
     @Test
-    public void listCarsByBrand() throws Exception {
+    public void listCarsByBrandAudis() throws Exception {
         mockMvc.perform(get("/api/search/audi")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(contentType))
                 .andExpect(jsonPath("$.data[0].plate", is("RB99-01")))
+                .andExpect(jsonPath("$.result", is("ok")));
+    }
+
+    @Test
+    public void listCarsByBrandBMW() throws Exception {
+        mockMvc.perform(get("/api/search/bmw")
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(contentType))
+                .andExpect(jsonPath("$.data[5].plate", is("TIBI-01")))
+                .andExpect(jsonPath("$.data[4].color", is("Khaki")))
                 .andExpect(jsonPath("$.result", is("ok")));
     }
 }
