@@ -1,6 +1,7 @@
 package com.greenfox.pallidaorientationexam.controllers;
 
 import com.greenfox.pallidaorientationexam.services.CarService;
+import com.greenfox.pallidaorientationexam.services.SearchValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +14,9 @@ public class CarWebController {
 
     @Autowired
     CarService carService;
+
+    @Autowired
+    SearchValidator searchValidator;
 
     @GetMapping({"/", ""})
     public String index(Model model) {
@@ -33,6 +37,10 @@ public class CarWebController {
             model.addAttribute("cars", carService.findAllDiplomat());
         } else {
             model.addAttribute("cars", carService.listAll());
+        }
+
+        if (!searchValidator.validateSearch(search)) {
+            model.addAttribute("errorMessage", "Sorry, the submitted licence plate is not valid");
         }
         return "licencePlates";
     }
