@@ -17,7 +17,7 @@ public class SearchValidator {
 
     public boolean validateSearch(String input) {
         StringBuilder sb = new StringBuilder();
-        sb.append(input.toUpperCase());
+        sb.append(input.toLowerCase());
         for (int i = 0; i < sb.length(); i++) {
             if (!enabledChars.contains(sb.charAt(i))||sb.length()>7) {
                 return false;

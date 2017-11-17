@@ -29,7 +29,9 @@ public class CarWebController {
                          Model model,
                          @RequestParam(value = "police", required = false, defaultValue = "0") String police,
                          @RequestParam(value = "diplomat", required = false, defaultValue = "0") String diplomat) {
-        if (!search.equals("")) {
+        if (!searchValidator.validateSearch(search)) {
+            model.addAttribute("errorMessage", "Sorry, the submitted licence plate is not valid");
+        } else if (!search.equals("")) {
             model.addAttribute("cars", carService.findAllByPlate(search));
         } else if (!police.equals("0")) {
             model.addAttribute("cars", carService.findAllPolice());
@@ -39,9 +41,7 @@ public class CarWebController {
             model.addAttribute("cars", carService.listAll());
         }
 
-        if (!searchValidator.validateSearch(search)) {
-            model.addAttribute("errorMessage", "Sorry, the submitted licence plate is not valid");
-        }
+
         return "licencePlates";
     }
 
