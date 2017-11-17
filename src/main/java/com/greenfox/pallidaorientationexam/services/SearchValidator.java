@@ -19,7 +19,7 @@ public class SearchValidator {
         StringBuilder sb = new StringBuilder();
         sb.append(input.toUpperCase());
         for (int i = 0; i < sb.length(); i++) {
-            if (!enabledChars.contains(sb.charAt(i))) {
+            if (!enabledChars.contains(sb.charAt(i))||sb.length()>7) {
                 return false;
             }
         }
