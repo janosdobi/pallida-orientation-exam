@@ -7,13 +7,14 @@
 </head>
 <body>
 <h1 class="text-center">Find my Licence</h1>
+<div class="container-fluid">
     <form action="/search" method="get">
         <input type="search" name="q" placeholder="Search"/>
         <button type="submit" value="Submit">Search</button>
     </form>
     <a class="btn btn-primary" href='/search?police=1'>Police cars only</a>
     <a class="btn btn-primary" href='/search?diplomat=1'>Diplomats only</a>
-    <table>
+    <table class="table table-striped">
         <tr>
             <th>Licence Plate</th>
             <th>Brand</th>
@@ -31,6 +32,7 @@
             <td th:text="*{year}"/>
         </tr>
     </table>
-    <p th:if="${errorMessage}" th:text="${errorMessage}"/>
+    <p class="bg-danger" th:if="${errorMessage}" th:text="${errorMessage}"/>
+</div>
 </body>
 </html>
