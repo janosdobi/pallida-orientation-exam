@@ -8,6 +8,7 @@ import java.util.List;
 
 public interface CarRepo extends CrudRepository<Car, Long> {
 
+    @Query(value = "SELECT * FROM licence_plates WHERE plate LIKE %?1%", nativeQuery = true)
     List<Car> findAllByPlate(String search);
 
     @Query(value = "SELECT * FROM licence_plates WHERE plate LIKE 'RB%'", nativeQuery = true)
