@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Licence Plates Finder</title>
+</head>
+<body>
+    <form action="/car/search" method="get">
+        <input type="search" name="search" placeholder="Search"/>
+        <button type="submit" value="Submit">Search</button>
+    </form>
+    <a href='/car/police'>Police cars only</a>
+    <a href='/car/diplomat'>Diplomats only</a>
+    <table>
+        <tr>
+            <th>Licence Plate</th>
+            <th>Brand</th>
+            <th>Model</th>
+            <th>Color</th>
+            <th>Year</th>
+        </tr>
+        <tr th:each="car : ${cars}" th:object="${car}">
+            <td th:text="*{licencePlate}"/>
+            <td th:text="*{brand}"/>
+            <td th:text="*{model}"/>
+            <td th:text="*{color}"/>
+            <td th:text="*{year}"/>
+        </tr>
+    </table>
+    <p th:if="${errorMessage}" th:text="${errorMessage}"/>
+</body>
+</html>
