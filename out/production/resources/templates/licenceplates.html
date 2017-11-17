@@ -33,10 +33,10 @@
             </tr>
         </table>
         <span>
-            <a class="btn btn-primary" th:href="@{'/?pageId={pageId}'(pageId=${pageId - 1})}">Previous Page</a>
+            <a class="btn btn-primary" th:if="${pageId}" th:href="@{'/?pageId={pageId}'(pageId=${pageId - 1})}">Previous Page</a>
         </span>
         <span>
-            <a class="btn btn-primary" th:href="@{'/?pageId={pageId}'(pageId=${pageId + 1})}">Next Page</a>
+            <a class="btn btn-primary" th:if="${pageId}" th:href="@{'/?pageId={pageId}'(pageId=${pageId + 1})}">Next Page</a>
         </span>
         <p class="bg-danger" th:if="${errorMessage}" th:text="${errorMessage}"/>
 </div>
