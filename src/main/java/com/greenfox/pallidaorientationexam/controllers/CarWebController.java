@@ -1,13 +1,18 @@
 package com.greenfox.pallidaorientationexam.controllers;
 
+import com.greenfox.pallidaorientationexam.models.CarList;
+import com.greenfox.pallidaorientationexam.models.ErrorMessage;
 import com.greenfox.pallidaorientationexam.services.CarService;
 import com.greenfox.pallidaorientationexam.services.SearchValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.Arrays;
 
 @Controller
 public class CarWebController {
@@ -17,6 +22,11 @@ public class CarWebController {
 
     @Autowired
     SearchValidator searchValidator;
+
+    @ExceptionHandler(Exception.class)
+    public ErrorMessage displayStatusError() {
+        return new ErrorMessage("Error. Something went wrong. Sorry :(");
+    }
 
     @GetMapping({"/", ""})
     public String index(Model model) {
