@@ -1,6 +1,5 @@
 package com.greenfox.pallidaorientationexam.controllers;
 
-import com.greenfox.pallidaorientationexam.models.CarList;
 import com.greenfox.pallidaorientationexam.models.ErrorMessage;
 import com.greenfox.pallidaorientationexam.services.CarService;
 import com.greenfox.pallidaorientationexam.services.SearchValidator;
@@ -11,8 +10,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import java.util.Arrays;
 
 @Controller
 public class CarWebController {
@@ -50,8 +47,6 @@ public class CarWebController {
         } else {
             model.addAttribute("cars", carService.listAll());
         }
-
-
         return "licencePlates";
     }
 
