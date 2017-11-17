@@ -18,4 +18,7 @@ public interface CarRepo extends CrudRepository<Car, Long> {
     List<Car> findAllDiplomat();
 
     List<Car> findAllByBrand(String brand);
+
+    @Query(value="SELECT * FROM licence_plates LIMIT 10 OFFSET ?1", nativeQuery = true)
+    List<Car> findAllByTen(long l);
 }

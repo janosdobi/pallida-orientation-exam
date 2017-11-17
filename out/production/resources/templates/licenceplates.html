@@ -6,33 +6,39 @@
     <title>Licence Plates Finder</title>
 </head>
 <body>
-<h1 class="text-center">Find my Licence</h1>
-<div class="container-fluid">
-    <form action="/search" method="get">
-        <input type="search" name="q" placeholder="Search"/>
-        <button type="submit" value="Submit">Search</button>
-    </form>
-    <a class="btn btn-primary" href='/search?police=1'>Police cars only</a>
-    <a class="btn btn-primary" href='/search?diplomat=1'>Diplomats only</a>
-    <table class="table table-striped">
-        <tr>
-            <th>Licence Plate</th>
-            <th>Brand</th>
-            <th>Model</th>
-            <th>Color</th>
-            <th>Year</th>
-        </tr>
-        <tr th:each="car : ${cars}" th:object="${car}">
-            <td th:text="*{plate}"/>
-            <td>
-                <a th:href="@{'/search/{brand}'(brand=*{brand})}" th:text="*{brand}"></a>
-            </td>
-            <td th:text="*{model}"/>
-            <td th:text="*{color}"/>
-            <td th:text="*{year}"/>
-        </tr>
-    </table>
-    <p class="bg-danger" th:if="${errorMessage}" th:text="${errorMessage}"/>
+    <h1 class="text-center">Find my Licence</h1>
+    <div class="container-fluid">
+        <form action="/search" method="get">
+            <input type="search" name="q" placeholder="Search"/>
+            <button type="submit" value="Submit">Search</button>
+        </form>
+        <a class="btn btn-primary" href='/search?police=1'>Police cars only</a>
+        <a class="btn btn-primary" href='/search?diplomat=1'>Diplomats only</a>
+        <table class="table table-striped">
+            <tr>
+                <th>Licence Plate</th>
+                <th>Brand</th>
+                <th>Model</th>
+                <th>Color</th>
+                <th>Year</th>
+            </tr>
+            <tr th:each="car : ${cars}" th:object="${car}">
+                <td th:text="*{plate}"/>
+                <td>
+                    <a th:href="@{'/search/{brand}'(brand=*{brand})}" th:text="*{brand}"></a>
+                </td>
+                <td th:text="*{model}"/>
+                <td th:text="*{color}"/>
+                <td th:text="*{year}"/>
+            </tr>
+        </table>
+        <span>
+            <a class="btn btn-primary" th:href="@{'/?pageId={pageId}'(pageId=${pageId - 1})}">Previous Page</a>
+        </span>
+        <span>
+            <a class="btn btn-primary" th:href="@{'/?pageId={pageId}'(pageId=${pageId + 1})}">Next Page</a>
+        </span>
+        <p class="bg-danger" th:if="${errorMessage}" th:text="${errorMessage}"/>
 </div>
 </body>
 </html>

@@ -26,8 +26,9 @@ public class CarWebController {
     }
 
     @GetMapping({"/", ""})
-    public String index(Model model) {
-        model.addAttribute("cars", carService.listAll());
+    public String index(Model model, @RequestParam(value = "pageId", defaultValue = "0") long pageId) {
+        model.addAttribute("cars", carService.listAllByTen(pageId));
+        model.addAttribute("pageId", pageId);
         return "licencePlates";
     }
 

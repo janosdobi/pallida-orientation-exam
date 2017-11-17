@@ -32,4 +32,8 @@ public class CarService {
     public List<Car> findAllByBrand(String brand) {
         return carRepo.findAllByBrand(brand);
     }
+
+    public List<Car> listAllByTen(long pageId) {
+        return carRepo.findAllByTen(pageId * 10);
+    }
 }
