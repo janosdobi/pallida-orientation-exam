@@ -15,4 +15,6 @@ public interface CarRepo extends CrudRepository<Car, Long> {
 
     @Query(value = "SELECT * FROM licence_plates WHERE plate LIKE 'DT%'", nativeQuery = true)
     List<Car> findAllDiplomat();
+
+    List<Car> findAllByBrand(String brand);
 }

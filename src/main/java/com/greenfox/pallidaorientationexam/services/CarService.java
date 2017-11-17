@@ -28,4 +28,8 @@ public class CarService {
     public List<Car> findAllDiplomat() {
         return carRepo.findAllDiplomat();
     }
+
+    public List<Car> findAllByBrand(String brand) {
+        return carRepo.findAllByBrand(brand);
+    }
 }
